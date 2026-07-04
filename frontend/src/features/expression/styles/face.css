@@ -1,0 +1,42 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #111;
+}
+
+.video {
+  width: 400px;
+  border-radius: 12px;
+  border: 2px solid #333;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+button {
+  padding: 12px 24px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:active {
+  transform: scale(0.98);
+}
