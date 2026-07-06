@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const authRouter = require("./routes/auth.route");
+const songRouter = require("./routes/song.routes");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -17,5 +18,6 @@ app.use(
 
 // Routes
 app.use("/api/auth", authRouter);
+app.use("/api/songs", songRouter);
 
 module.exports = app;
