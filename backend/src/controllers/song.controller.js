@@ -7,6 +7,8 @@ const uploadSongController = async (req, res) => {
   const tags = id3.read(req.file.buffer);
   const { mood } = req.body;
 
+  console.log("tags: ", tags);
+
   if (!mood || !tags) {
     return res.status(400).json({
       message: "Input not received",
@@ -21,18 +23,20 @@ const uploadSongController = async (req, res) => {
       folder: "cohort-2/moodify/songs",
     }),
 
-    storageService.uploadFile({
-      buffer: tags.image.imageBuffer,
-      fileName: tags.title,
-      folder: "cohort-2/moodify/poster",
-    }),
+    tags.image?.imageBuffer
+      ? storageService.uploadFile({
+          buffer: tags.image.imageBuffer,
+          fileName: tags.title,
+          folder: "cohort-2/moodify/poster",
+        })
+      : Promise.resolve(null),
   ]);
 
   const song = await songModel.create({
     url: songFile.url,
-    posterUrl: postFile.url,
     title: tags.title,
     mood,
+    ...(postFile && { posterUrl: postFile.url }),
   });
 
   res.status(201).json({

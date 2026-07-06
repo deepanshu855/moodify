@@ -8,6 +8,8 @@ const songSchema = mongoose.Schema({
   posterUrl: {
     type: String,
     required: true,
+    default:
+      "https://static.vecteezy.com/system/resources/thumbnails/024/677/947/small/music-3d-icon-free-png.png",
   },
   title: {
     type: String,
@@ -16,7 +18,7 @@ const songSchema = mongoose.Schema({
   mood: {
     type: String,
     enum: {
-      values: ["sad", "happy", "surprised"],
+      values: ["sad", "happy", "surprise"],
     },
   },
 });
