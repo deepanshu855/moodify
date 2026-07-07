@@ -11,5 +11,6 @@ songRouter.post(
 );
 
 songRouter.get("/", songController.getSongController);
+songRouter.get("/playlist", songController.getPlaylistController);
 
 module.exports = songRouter;

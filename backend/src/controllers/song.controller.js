@@ -7,8 +7,6 @@ const uploadSongController = async (req, res) => {
   const tags = id3.read(req.file.buffer);
   const { mood } = req.body;
 
-  console.log("tags: ", tags);
-
   if (!mood || !tags) {
     return res.status(400).json({
       message: "Input not received",
@@ -66,7 +64,27 @@ const getSongController = async (req, res) => {
   });
 };
 
+const getPlaylistController = async (req, res) => {
+  const { mood } = req.query;
+
+  const songs = await songModel.find({
+    mood,
+  });
+
+  if (!songs) {
+    return res.status(404).json({
+      message: "Playlist not found",
+    });
+  }
+
+  res.status(200).json({
+    message: "Playlist fetched successfully",
+    songs,
+  });
+};
+
 module.exports = {
   uploadSongController,
   getSongController,
+  getPlaylistController,
 };
