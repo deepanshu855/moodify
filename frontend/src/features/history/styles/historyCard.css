@@ -1,0 +1,105 @@
+.history-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle glow effect using the dynamic mood color variable */
+.history-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--card-accent);
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  opacity: 0.8;
+  transition: width 0.3s ease;
+}
+
+.history-card:hover::before {
+  width: 6px;
+}
+
+/* --- Left Side (Icon + Text) --- */
+.history-card__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 8px; /* Offset for the left border accent */
+}
+
+.history-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.history-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-card__details h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.history-card__details p {
+  font-size: 0.8rem;
+  color: #b8c1d1;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* --- Right Side (Date/Time) --- */
+.history-card__time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  text-align: right;
+}
+
+.history-card__time p {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0;
+}
+
+.history-card__time span {
+  font-size: 0.75rem;
+  color: #8b5cf6; /* Accent color for time */
+  font-weight: 600;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 4px 8px;
+  border-radius: 8px;
+}

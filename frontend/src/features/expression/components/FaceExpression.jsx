@@ -32,11 +32,7 @@ export default function FaceExpression({ onClick = () => {} }) {
 
   const handleClick = () => {
     const expression = detect({ videoRef, landmarkerRef, setExpression });
-
-    const allowedExpression = ["sad", "happy", "surprise"];
-    if (allowedExpression.includes(expression)) {
-      onClick(expression);
-    }
+    onClick(expression);
   };
 
   // Helper to determine if a valid mood is detected for text coloring

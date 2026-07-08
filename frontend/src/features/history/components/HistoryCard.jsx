@@ -8,6 +8,14 @@ const moodEmoji = {
   neutral: "😐",
 };
 
+// Map colors to moods for a premium visual touch
+const moodColors = {
+  happy: "#22C55E",    // Success Green
+  sad: "#3B82F6",      // Blue
+  surprise: "#F59E0B", // Amber
+  neutral: "#8B5CF6",  // Primary Purple
+};
+
 const HistoryCard = ({ mood, time }) => {
   const date = new Date(time);
 
@@ -22,10 +30,18 @@ const HistoryCard = ({ mood, time }) => {
     minute: "2-digit",
   });
 
+  const normalizedMood = mood.toLowerCase();
+  const activeColor = moodColors[normalizedMood] || "#B8C1D1";
+
   return (
-    <div className="history-card">
+    <div 
+      className="history-card"
+      style={{ "--card-accent": activeColor }}
+    >
       <div className="history-card__left">
-        <div className="history-card__emoji">{moodEmoji[mood] || "🎵"}</div>
+        <div className="history-card__icon">
+          {moodEmoji[normalizedMood] || "🎵"}
+        </div>
 
         <div className="history-card__details">
           <h3>{mood.charAt(0).toUpperCase() + mood.slice(1)}</h3>

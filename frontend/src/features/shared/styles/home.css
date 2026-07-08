@@ -1,11 +1,11 @@
 /* --- Main Layout Wrapper --- */
 .home-layout {
-  width: 100%;
-  min-height: 100vh; /* Allows the page to grow beyond the screen height */
+  width: 100%; /* Changed from 100vw */
+  height: 100%; 
+  overflow: hidden; 
   display: flex;
   flex-direction: column;
-  background: #090b17;
-  overflow-x: hidden; /* Only hide horizontal overflow */
+  background: #090B17;
 }
 
 /* --- Dashboard Container --- */
@@ -24,6 +24,13 @@
   gap: 24px;
   /* Align items to the start so the cards don't stretch vertically to match each other if one is taller */
   align-items: start;
+}
+
+.dashboard-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
 }
 
 /* --- Responsive Adjustments --- */

@@ -46,7 +46,7 @@ export const detect = ({ videoRef, landmarkerRef, setExpression }) => {
     const frownLeft = getScore("mouthFrownLeft");
     const frownRight = getScore("mouthFrownRight");
 
-    let currentExpression = "Neutral";
+    let currentExpression = "neutral";
 
     if (smileLeft > 0.3 && smileRight > 0.3) {
       currentExpression = "happy";
