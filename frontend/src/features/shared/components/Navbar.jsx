@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/nav.css";
 import { useAuth } from "../../auth/hooks/useAuth";
 
 const Navbar = () => {
-  const { loading, user } = useAuth();
+  const { loading, user, handleLogout } = useAuth();
+  const navigate = useNavigate();
 
   if (loading) {
     return (
@@ -12,6 +13,11 @@ const Navbar = () => {
       </header>
     );
   }
+
+  const handleClick = async () => {
+    await handleLogout();
+    navigate("/");
+  };
 
   return (
     <header className="navbar">
@@ -76,7 +82,7 @@ const Navbar = () => {
 
           {/* Hover Dropdown */}
           <div className="profile__dropdown">
-            <button className="dropdown__logout">
+            <button onClick={handleClick} className="dropdown__logout">
               <svg
                 width="16"
                 height="16"

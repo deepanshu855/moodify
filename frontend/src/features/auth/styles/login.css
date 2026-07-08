@@ -1,0 +1,213 @@
+/* --- Layout & Background --- */
+.auth-layout {
+  width: 100%;
+  min-height: 100vh;
+  background: #090b17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Decorative Background Glows */
+.auth-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.auth-glow-purple {
+  background: #8b5cf6;
+  top: -100px;
+  left: -100px;
+}
+
+.auth-glow-indigo {
+  background: #6366f1;
+  bottom: -100px;
+  right: -100px;
+}
+
+/* --- The Glassmorphism Card --- */
+.auth-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* --- Header Section --- */
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.auth-logo h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.auth-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.auth-header p {
+  color: #b8c1d1;
+  font-size: 0.95rem;
+}
+
+/* --- Form & Inputs --- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-wrapper label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #b8c1d1;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0 16px;
+  transition: all 0.3s ease;
+}
+
+.input-group:focus-within {
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.05);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.input-icon {
+  color: #b8c1d1;
+  margin-right: 12px;
+}
+
+.input-group:focus-within .input-icon {
+  color: #8b5cf6;
+}
+
+.input-group input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 14px 0;
+  outline: none;
+}
+
+.input-group input::placeholder {
+  color: rgba(184, 193, 209, 0.5);
+}
+
+/* --- Submit Button --- */
+.auth-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  margin-top: 8px;
+}
+
+.auth-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.auth-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* --- Footer Link --- */
+.auth-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #b8c1d1;
+}
+
+.auth-footer a {
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  margin-left: 4px;
+}
+
+.auth-footer a:hover {
+  color: #a78bfa;
+  text-decoration: underline;
+}
+
+/* --- Loading State --- */
+.auth-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  color: #8b5cf6;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-purple {
+  color: #8b5cf6;
+}

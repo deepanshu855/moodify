@@ -54,7 +54,7 @@ const Song = ({ song, index, isActive }) => {
 
       {/* Column 4: Artist (Fallback to unknown if missing) */}
       <div className="song-col artist-col">
-        <span className="song-artist">{song.artist || "Imagine Dragons"}</span>
+        <span className="song-artist">{song.mood.charAt(0).toUpperCase()+song.mood.slice(1)}</span>
       </div>
 
       {/* Column 5: Duration */}

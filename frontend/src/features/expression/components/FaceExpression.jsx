@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/face.css";
 import { detect, init } from "../utils/utils";
+import { ScanFace } from "lucide-react";
 
 const moodEmoji = {
   happy: "😊",
@@ -32,7 +33,10 @@ export default function FaceExpression({ onClick = () => {} }) {
 
   const handleClick = () => {
     const expression = detect({ videoRef, landmarkerRef, setExpression });
-    onClick(expression);
+    const allowedMoods = ["happy", "sad", "surprise", "neutral"];
+    if (allowedMoods.includes(expression)) {
+      onClick(expression);
+    }
   };
 
   // Helper to determine if a valid mood is detected for text coloring
@@ -80,7 +84,7 @@ export default function FaceExpression({ onClick = () => {} }) {
       {/* Status Bar */}
       <div className="face-card__status">
         <div className="status__icon">
-          {moodEmoji[expression.toLowerCase()] || "🤖"}
+          {moodEmoji[expression.toLowerCase()] || <ScanFace />}
         </div>
 
         <div className="status__info">
