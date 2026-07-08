@@ -4,19 +4,26 @@ import FaceExpression from "../../expression/components/FaceExpression";
 import Player from "../components/Player";
 import "../styles/home.css";
 import { useSong } from "../hooks/useSong";
+import Playlist from "../components/Playlist";
+import Navbar from "../../shared/components/Navbar";
 
 const Home = () => {
-  const { handleGetSong } = useSong();
+  const { handleGetSong, handleGetPlaylist } = useSong();
 
   return (
-    <h1>
-      <FaceExpression
-        onClick={(expression) => {
-          handleGetSong({ mood: expression });
-        }}
-      />
-      <Player />
-    </h1>
+    <main>
+      {/* <Navbar /> */}
+      <div className="top-row">
+        <FaceExpression
+          onClick={(expression) => {
+            handleGetSong({ mood: expression });
+            handleGetPlaylist({ mood: expression });
+          }}
+        />
+        <Player />
+      </div>
+      <Playlist />
+    </main>
   );
 };
 

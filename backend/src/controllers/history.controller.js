@@ -23,7 +23,7 @@ const createHistory = async (req, res) => {
   const { mood } = req.body;
   const userId = req.user.id;
 
-  const allowedMoods = ["happy", "sad", "surprise"];
+  const allowedMoods = ["happy", "sad", "surprise", "neutral"];
   if (!allowedMoods.includes(mood)) {
     return res.status(400).json({
       message: "Not a valid mood",

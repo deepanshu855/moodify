@@ -27,9 +27,17 @@ const Player = () => {
 
   // reset when the song changes
   useEffect(() => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio || !song?.url) return;
     setCurrentTime(0);
-    setIsPlaying(false);
+    audio.load(); // force the element to pick up the new src
+    audio
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch((err) => {
+        console.warn("Playback blocked:", err);
+        setIsPlaying(false);
+      });
   }, [song?.url]);
 
   useEffect(() => {

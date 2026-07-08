@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/face.css";
 import { detect, init } from "../utils/utils";
 
-export default function FaceExpression({onClick = () => {}}) {
+export default function FaceExpression({ onClick = () => {} }) {
   const videoRef = useRef(null);
   const landmarkerRef = useRef(null);
   const streamRef = useRef(null);
@@ -25,11 +25,16 @@ export default function FaceExpression({onClick = () => {}}) {
 
   const handleClick = () => {
     const expression = detect({ videoRef, landmarkerRef, setExpression });
-    onClick(expression);
+
+    const allowedExpression = ["sad", "happy", "surprise"];
+    if (allowedExpression.includes(expression)) {
+      onClick(expression);
+    }
   };
 
   return (
     <div className="expression-container">
+      <h3>Face Expression</h3>
       <video ref={videoRef} className="video" playsInline autoPlay muted />
       <h2>{expression}</h2>
       <button onClick={handleClick}>Detect Expression</button>

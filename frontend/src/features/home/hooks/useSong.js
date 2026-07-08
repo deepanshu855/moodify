@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SongContext } from "../SongProvider";
-import { getSong } from "../services/song.api";
+import { getPlaylist, getSong } from "../services/song.api";
 
 export const useSong = () => {
-  const { song, setSong, loading, setLoading } = useContext(SongContext);
+  const { song, setSong, loading, setLoading, playlist, setPlaylist } =
+    useContext(SongContext);
 
   const handleGetSong = async ({ mood }) => {
     setLoading(true);
@@ -17,9 +18,25 @@ export const useSong = () => {
     }
   };
 
+  const handleGetPlaylist = async ({ mood }) => {
+    setLoading(true);
+    try {
+      const response = await getPlaylist({ mood });
+      console.log("useSong ", response.songs);
+      setPlaylist(response.songs);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     loading,
     song,
+    setSong,
+    playlist,
     handleGetSong,
+    handleGetPlaylist,
   };
 };

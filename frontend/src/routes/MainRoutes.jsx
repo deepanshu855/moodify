@@ -5,6 +5,7 @@ import Register from "../features/auth/pages/Register";
 import FaceExpression from "../features/expression/components/FaceExpression";
 import Protected from "../features/shared/components/Protected";
 import Home from "../features/home/Pages/Home";
+import History from "../features/history/pages/History";
 
 const MainRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const MainRoutes = () => {
         }
       />
       <Route path="/expression" element={<FaceExpression />} />
+      <Route path="/history" element={<History/>} />
     </Routes>
   );
 };

@@ -16,3 +16,8 @@ export const getSong = async ({ mood }) => {
   const response = await instance.get(`/songs?mood=${mood}`);
   return response.data;
 };
+
+export const getPlaylist = async ({ mood }) => {
+  const response = await instance.get(`/songs/playlist?mood=${mood}`);
+  return response.data;
+};
