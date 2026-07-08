@@ -17,7 +17,7 @@ const Register = () => {
     const { username, email, password } = data;
     await handleRegister(username, email, password);
 
-    navigate("/");
+    navigate("/home");
   };
 
   return (

@@ -1,0 +1,190 @@
+/* --- Song Row (CSS Grid Layout) --- */
+.song-row {
+  display: grid;
+  /* Perfect column ratios: Play | Image | Title | Artist | Duration | Options */
+  grid-template-columns: 40px 48px 2fr 1.5fr 80px 50px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: #b8c1d1;
+}
+
+.song-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Active State matches reference image */
+.song-row.active {
+  background: rgba(139, 92, 246, 0.15);
+  color: #ffffff;
+}
+
+/* --- Columns --- */
+.song-col {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Index / Play / EQ */
+.index-col {
+  justify-content: center;
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.hover-play-icon {
+  display: none;
+  color: #ffffff;
+}
+
+.song-row:hover .index-number,
+.song-row:hover .playing-eq {
+  display: none;
+}
+
+.song-row:hover .hover-play-icon {
+  display: flex;
+}
+
+/* Album Art */
+.art-col img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.song-poster-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text Formatting */
+.title-col .song-title {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.artist-col .song-artist {
+  font-size: 0.9rem;
+}
+
+.duration-col {
+  font-size: 0.9rem;
+}
+
+/* Actions */
+.actions-col {
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.more-options-btn {
+  background: transparent;
+  border: none;
+  color: #b8c1d1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    background 0.2s;
+}
+
+.song-row:hover .more-options-btn {
+  opacity: 1;
+}
+
+.more-options-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* --- Animations (EQ and Waves) --- */
+.playing-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.eq-bar {
+  width: 3px;
+  background: #8b5cf6;
+  border-radius: 2px;
+  animation: eq-bounce 0.8s infinite ease-in-out alternate;
+}
+
+.eq-bar:nth-child(2) {
+  animation-delay: -0.4s;
+}
+.eq-bar:nth-child(3) {
+  animation-delay: -0.2s;
+}
+
+@keyframes eq-bounce {
+  0% {
+    height: 4px;
+  }
+  100% {
+    height: 14px;
+  }
+}
+
+.active-wave-icon {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 16px;
+}
+
+.wave-line {
+  width: 2px;
+  background: #8b5cf6;
+  border-radius: 2px;
+  animation: wave-bounce 1s infinite ease-in-out;
+}
+
+.wave-line:nth-child(1) {
+  height: 40%;
+  animation-delay: 0s;
+}
+.wave-line:nth-child(2) {
+  height: 100%;
+  animation-delay: 0.2s;
+}
+.wave-line:nth-child(3) {
+  height: 60%;
+  animation-delay: 0.4s;
+}
+.wave-line:nth-child(4) {
+  height: 80%;
+  animation-delay: 0.1s;
+}
+
+@keyframes wave-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

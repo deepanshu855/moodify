@@ -1,0 +1,38 @@
+/* --- Main Layout Wrapper --- */
+.home-layout {
+  width: 100%;
+  min-height: 100vh; /* Allows the page to grow beyond the screen height */
+  display: flex;
+  flex-direction: column;
+  background: #090b17;
+  overflow-x: hidden; /* Only hide horizontal overflow */
+}
+
+/* --- Dashboard Container --- */
+.dashboard-container {
+  flex-grow: 1;
+  padding: 24px 40px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* --- Top Row (Face & Player Cards) --- */
+.dashboard-top-row {
+  display: grid;
+  grid-template-columns: 4.5fr 5.5fr;
+  gap: 24px;
+  /* Align items to the start so the cards don't stretch vertically to match each other if one is taller */
+  align-items: start;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .dashboard-top-row {
+    grid-template-columns: 1fr; /* Stack vertically on smaller screens */
+  }
+
+  .dashboard-container {
+    padding: 20px;
+  }
+}

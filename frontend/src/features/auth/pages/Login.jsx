@@ -17,7 +17,7 @@ const Login = () => {
     const { username, password } = data;
     await handleLogin(username, password);
 
-    navigate("/");
+    navigate("/home");
   };
 
   return (

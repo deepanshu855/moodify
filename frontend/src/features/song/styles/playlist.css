@@ -1,0 +1,65 @@
+/* --- Main Container --- */
+.playlist-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* Remove flex-grow, min-height: 0, and overflow: hidden */
+  width: 100%;
+}
+
+.state-card {
+  align-items: center;
+  justify-content: center;
+  color: #b8c1d1;
+  font-weight: 500;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  color: #8b5cf6;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Header --- */
+.playlist__header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.header__title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__title-group h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.mood-highlight {
+  color: #22c55e;
+  text-transform: capitalize;
+}
+
+.playlist__scroll-area {
+  padding: 12px;
+  /* Remove overflow-y: auto and flex-grow */
+}
+
+.playlist__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
