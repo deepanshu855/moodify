@@ -6,9 +6,11 @@ import "../styles/home.css";
 import { useSong } from "../hooks/useSong";
 import Playlist from "../components/Playlist";
 import Navbar from "../../shared/components/Navbar";
+import { useHistory } from "../../history/hooks/useHistory";
 
 const Home = () => {
   const { handleGetSong, handleGetPlaylist } = useSong();
+  const { handleCreateHistory } = useHistory();
 
   return (
     <main>
@@ -18,6 +20,7 @@ const Home = () => {
           onClick={(expression) => {
             handleGetSong({ mood: expression });
             handleGetPlaylist({ mood: expression });
+            handleCreateHistory(expression);
           }}
         />
         <Player />

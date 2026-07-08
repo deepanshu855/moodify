@@ -5,14 +5,17 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./features/auth/AuthProvider.jsx";
 import SongProvider from "./features/home/SongProvider.jsx";
+import HistoryContextProvider from "./features/history/HistoryContextProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <SongProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <HistoryContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </HistoryContextProvider>
       </SongProvider>
     </AuthProvider>
   </StrictMode>,

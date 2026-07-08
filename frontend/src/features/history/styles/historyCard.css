@@ -1,0 +1,79 @@
+.history-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 20px;
+  margin-top: 14px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.25s ease;
+}
+
+.history-card:hover {
+  transform: translateY(-2px);
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.18);
+}
+
+.history-card__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.history-card__emoji {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.8rem;
+
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: 50%;
+}
+
+.history-card__details h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.history-card__details p {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.history-card__time {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.history-card__time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.history-card__time p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.history-card__time span {
+  color: #a1a1aa;
+  font-size: 0.8rem;
+}

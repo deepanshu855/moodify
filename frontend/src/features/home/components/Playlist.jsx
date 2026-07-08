@@ -15,11 +15,7 @@ const Playlist = () => {
     );
   }
 
-  console.log("Playlist ", playlist);
-
   const songs = playlist || [];
-
-  console.log("Songs ", songs);
 
   if (!songs.length) {
     return (

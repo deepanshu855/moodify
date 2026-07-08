@@ -22,7 +22,6 @@ export const useSong = () => {
     setLoading(true);
     try {
       const response = await getPlaylist({ mood });
-      console.log("useSong ", response.songs);
       setPlaylist(response.songs);
     } catch (error) {
       alert(error);
