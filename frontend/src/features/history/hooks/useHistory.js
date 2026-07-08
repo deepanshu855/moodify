@@ -12,7 +12,9 @@ export const useHistory = () => {
       const response = await getHistory();
       setHistory(response.history.reverse());
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }
@@ -25,7 +27,9 @@ export const useHistory = () => {
       const response = await createHistory(mood);
       await handleGetHistory();
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }

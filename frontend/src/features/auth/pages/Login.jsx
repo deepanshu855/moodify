@@ -1,20 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { User, Lock, Activity, Loader2 } from "lucide-react";
-import "../styles/login.css"
+import "../styles/login.css";
 import { useAuth } from "../hooks/useAuth";
+import Galaxy from "../../../background/Galaxy";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { handleLogin, loading } = useAuth();
+  const { user, handleLogin, loading } = useAuth();
 
   const submitHandler = async (data) => {
     const { username, password } = data;
     await handleLogin(username, password);
     navigate("/home");
   };
+
+  if (user) {
+    return <Navigate to={"/home"} />;
+  }
 
   // Styled Loading State
   if (loading) {
@@ -29,57 +34,73 @@ const Login = () => {
   }
 
   return (
-    <main className="auth-layout">
-      {/* Decorative background glows */}
-      <div className="auth-glow auth-glow-purple"></div>
-      <div className="auth-glow auth-glow-indigo"></div>
+    <div className="auth-page">
+      <Galaxy
+        starSpeed={0.5}
+        density={1}
+        hueShift={140}
+        speed={1}
+        glowIntensity={0.3}
+        saturation={0}
+        mouseRepulsion
+        repulsionStrength={2}
+        twinkleIntensity={0.3}
+        rotationSpeed={0.1}
+        transparent
+      />
 
-      <div className="auth-card">
-        <div className="auth-header">
-          <div className="auth-logo">
-            <Activity size={28} className="icon-purple" />
-            <h2>Moodify</h2>
+      <main className="auth-layout">
+        {/* Decorative background glows */}
+        <div className="auth-glow auth-glow-purple"></div>
+        <div className="auth-glow auth-glow-indigo"></div>
+
+        <div className="auth-card">
+          <div className="auth-header">
+            <div className="auth-logo">
+              <Activity size={28} className="icon-purple" />
+              <h2>Moodify</h2>
+            </div>
+            <h1>Welcome back</h1>
+            <p>Enter your details to get back to the music.</p>
           </div>
-          <h1>Welcome back</h1>
-          <p>Enter your details to get back to the music.</p>
+
+          <form onSubmit={handleSubmit(submitHandler)} className="auth-form">
+            <div className="input-wrapper">
+              <label>Username</label>
+              <div className="input-group">
+                <User size={18} className="input-icon" />
+                <input
+                  type="text"
+                  {...register("username", { required: true })}
+                  placeholder="Enter username"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+
+            <div className="input-wrapper">
+              <label>Password</label>
+              <div className="input-group">
+                <Lock size={18} className="input-icon" />
+                <input
+                  type="password"
+                  {...register("password", { required: true })}
+                  placeholder="Enter password"
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="auth-submit-btn">
+              Login
+            </button>
+          </form>
+
+          <p className="auth-footer">
+            Don't have an account? <Link to="/register">Create one</Link>
+          </p>
         </div>
-
-        <form onSubmit={handleSubmit(submitHandler)} className="auth-form">
-          <div className="input-wrapper">
-            <label>Username</label>
-            <div className="input-group">
-              <User size={18} className="input-icon" />
-              <input
-                type="text"
-                {...register("username", { required: true })}
-                placeholder="Enter username"
-                autoComplete="off"
-              />
-            </div>
-          </div>
-
-          <div className="input-wrapper">
-            <label>Password</label>
-            <div className="input-group">
-              <Lock size={18} className="input-icon" />
-              <input
-                type="password"
-                {...register("password", { required: true })}
-                placeholder="Enter password"
-              />
-            </div>
-          </div>
-
-          <button type="submit" className="auth-submit-btn">
-            Login
-          </button>
-        </form>
-
-        <p className="auth-footer">
-          Don't have an account? <Link to="/register">Create one</Link>
-        </p>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 };
 

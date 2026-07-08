@@ -12,7 +12,9 @@ export const useSong = () => {
       const response = await getSong({ mood });
       setSong(response.song);
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }
@@ -24,7 +26,9 @@ export const useSong = () => {
       const response = await getPlaylist({ mood });
       setPlaylist(response.songs);
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }

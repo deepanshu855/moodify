@@ -37,7 +37,7 @@ const Playlist = () => {
         <div className="header__title-group">
           <ListMusic size={18} className="icon-muted" />
           <h3>
-            Smart Recommendations{" "}
+            AI Recommendations{" "}
             <span className="mood-highlight">
               ({playlist?.mood ? playlist.mood : "Mixed"})
             </span>

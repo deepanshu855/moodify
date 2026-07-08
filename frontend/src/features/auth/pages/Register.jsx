@@ -2,8 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { User, Lock, Mail, Activity, Loader2 } from "lucide-react";
-import "../styles/login.css"; 
+import "../styles/login.css";
 import { useAuth } from "../hooks/useAuth";
+import Galaxy from "../../../background/Galaxy";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -29,70 +30,85 @@ const Register = () => {
   }
 
   return (
-    <main className="auth-layout">
-      {/* Decorative background glows */}
-      <div className="auth-glow auth-glow-purple"></div>
-      <div className="auth-glow auth-glow-indigo"></div>
+    <div className="auth-page">
+      <Galaxy
+        starSpeed={0.5}
+        density={1}
+        hueShift={140}
+        speed={1}
+        glowIntensity={0.3}
+        saturation={0}
+        mouseRepulsion
+        repulsionStrength={2}
+        twinkleIntensity={0.3}
+        rotationSpeed={0.1}
+        transparent
+      />
+      <main className="auth-layout">
+        {/* Decorative background glows */}
+        <div className="auth-glow auth-glow-purple"></div>
+        <div className="auth-glow auth-glow-indigo"></div>
 
-      <div className="auth-card">
-        <div className="auth-header">
-          <div className="auth-logo">
-            <Activity size={28} className="icon-purple" />
-            <h2>Moodify</h2>
+        <div className="auth-card">
+          <div className="auth-header">
+            <div className="auth-logo">
+              <Activity size={28} className="icon-purple" />
+              <h2>Moodify</h2>
+            </div>
+            <h1>Create an account</h1>
+            <p>Sign up to start discovering music tailored to your mood.</p>
           </div>
-          <h1>Create an account</h1>
-          <p>Sign up to start discovering music tailored to your mood.</p>
+
+          <form onSubmit={handleSubmit(submitHandler)} className="auth-form">
+            <div className="input-wrapper">
+              <label>Username</label>
+              <div className="input-group">
+                <User size={18} className="input-icon" />
+                <input
+                  type="text"
+                  {...register("username", { required: true })}
+                  placeholder="Enter username"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+
+            <div className="input-wrapper">
+              <label>Email</label>
+              <div className="input-group">
+                <Mail size={18} className="input-icon" />
+                <input
+                  type="email" /* Changed type to email for better mobile keyboard support */
+                  {...register("email", { required: true })}
+                  placeholder="Enter email"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+
+            <div className="input-wrapper">
+              <label>Password</label>
+              <div className="input-group">
+                <Lock size={18} className="input-icon" />
+                <input
+                  type="password"
+                  {...register("password", { required: true })}
+                  placeholder="Enter password"
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="auth-submit-btn">
+              Register
+            </button>
+          </form>
+
+          <p className="auth-footer">
+            Already have an account? <Link to="/login">Log In</Link>
+          </p>
         </div>
-
-        <form onSubmit={handleSubmit(submitHandler)} className="auth-form">
-          <div className="input-wrapper">
-            <label>Username</label>
-            <div className="input-group">
-              <User size={18} className="input-icon" />
-              <input
-                type="text"
-                {...register("username", { required: true })}
-                placeholder="Enter username"
-                autoComplete="off"
-              />
-            </div>
-          </div>
-
-          <div className="input-wrapper">
-            <label>Email</label>
-            <div className="input-group">
-              <Mail size={18} className="input-icon" />
-              <input
-                type="email" /* Changed type to email for better mobile keyboard support */
-                {...register("email", { required: true })}
-                placeholder="Enter email"
-                autoComplete="off"
-              />
-            </div>
-          </div>
-
-          <div className="input-wrapper">
-            <label>Password</label>
-            <div className="input-group">
-              <Lock size={18} className="input-icon" />
-              <input
-                type="password"
-                {...register("password", { required: true })}
-                placeholder="Enter password"
-              />
-            </div>
-          </div>
-
-          <button type="submit" className="auth-submit-btn">
-            Register
-          </button>
-        </form>
-
-        <p className="auth-footer">
-          Already have an account? <Link to="/login">Log In</Link>
-        </p>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 };
 

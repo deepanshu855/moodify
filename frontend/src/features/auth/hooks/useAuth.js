@@ -6,6 +6,7 @@ import {
   logoutUser,
   registerUser,
 } from "../services/auth.api";
+import { toast } from "react-toastify";
 
 export const useAuth = () => {
   const { loading, setLoading, user, setUser } = useContext(AuthContext);
@@ -15,8 +16,13 @@ export const useAuth = () => {
     try {
       const response = await loginUser(username, password);
       setUser(response.user);
+      toast.success("Logged in successfully!", {
+        autoClose: 1000,
+      });
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }
@@ -26,9 +32,14 @@ export const useAuth = () => {
     setLoading(true);
     try {
       const response = await registerUser(username, email, password);
+      toast.success("Registered successfully!", {
+        autoClose: 1000,
+      });
       setUser(response.user);
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }
@@ -39,34 +50,23 @@ export const useAuth = () => {
     try {
       const response = await logoutUser();
       setUser(null);
+      toast.success("Logged out successfully!", {
+        autoClose: 1000,
+      });
     } catch (error) {
-      alert(error);
+      toast.error(error.response?.data?.message || "Something went wrong.", {
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
     }
   };
-
-  // const handleGetMe = async () => {
-  //   // setLoading(true);
-  //   try {
-  //     const response = await getMe();
-  //     setUser(response.user);
-  //   } catch (error) {
-  //     alert(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleGetMe();
-  // }, []);
 
   return {
     loading,
     user,
     handleLogin,
     handleRegister,
-    handleLogout
+    handleLogout,
   };
 };

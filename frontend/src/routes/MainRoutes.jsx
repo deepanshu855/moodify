@@ -6,11 +6,13 @@ import FaceExpression from "../features/expression/components/FaceExpression";
 import Protected from "../features/shared/components/Protected";
 import History from "../features/history/pages/History";
 import Home from "../features/shared/Pages/Home";
+import Landing from "../features/shared/Pages/Landing";
+import PageNotFound from "../features/shared/Pages/PageNotFound";
 
 const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<h1>Landing Page</h1>} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
@@ -27,6 +29,13 @@ const MainRoutes = () => {
           <Protected>
             <History />
           </Protected>
+        }
+      />
+
+      <Route
+        path="*"
+        element={
+          <PageNotFound/>
         }
       />
     </Routes>

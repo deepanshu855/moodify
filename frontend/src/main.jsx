@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./features/auth/AuthProvider.jsx";
 import SongProvider from "./features/song/SongProvider.jsx";
 import HistoryContextProvider from "./features/history/HistoryContextProvider.jsx";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")).render(
         <HistoryContextProvider>
           <BrowserRouter>
             <App />
+            <ToastContainer/>
           </BrowserRouter>
         </HistoryContextProvider>
       </SongProvider>
