@@ -29,7 +29,7 @@ export default function FaceExpression({onClick = () => {}}) {
   };
 
   return (
-    <div className="container">
+    <div className="expression-container">
       <video ref={videoRef} className="video" playsInline autoPlay muted />
       <h2>{expression}</h2>
       <button onClick={handleClick}>Detect Expression</button>
