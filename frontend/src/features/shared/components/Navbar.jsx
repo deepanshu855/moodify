@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <header className="navbar">
-      <div className="navbar__logo">
+      <NavLink to="/" className="navbar__logo">
         <svg
           width="24"
           height="24"
@@ -38,7 +38,7 @@ const Navbar = () => {
           />
         </svg>
         <h1>Moodify</h1>
-      </div>
+      </NavLink>
 
       <nav className="navbar__links">
         <NavLink
