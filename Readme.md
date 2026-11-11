@@ -52,7 +52,6 @@ The project demonstrates the integration of Machine Learning, Computer Vision, a
 - MongoDB
 - Mongoose
 - JWT Authentication
-- Redis
 
 ### Storage Service Provider
 
@@ -128,9 +127,6 @@ Create a `.env` file inside the backend directory.
 
 MONGO_URI=
 JWT_SECRET=
-REDIS_HOST=
-REDIS_PORT=
-REDIS_PASSWORD=
 IMAGE_KIT_PRIVATE_KEY=
 
 ```
